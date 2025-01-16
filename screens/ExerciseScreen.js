@@ -1,30 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 
-const JournalScreen = ({ navigation }) => {
-  const [entry, setEntry] = useState('');
-
-  const saveJournalEntry = () => {
-    // In a real app, you'd save this data to a database or local storage
-    console.log('Journal Entry Saved:', entry);
-    setEntry(''); // Reset input after saving
+const ExerciseScreen = () => {
+  const [exercise, setExercise] = useState('');
+  
+  const saveExerciseLog = () => {
+    console.log('Exercise completed:', exercise);
+    setExercise(''); // Reset after saving
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Recovery Journal</Text>
+      <Text style={styles.header}>Exercise Log</Text>
       <TextInput
         style={styles.textInput}
-        placeholder="How are you feeling today?"
-        value={entry}
-        onChangeText={setEntry}
-        multiline
+        placeholder="What exercise did you do today?"
+        value={exercise}
+        onChangeText={setExercise}
       />
-      <Button title="Save Entry" onPress={saveJournalEntry} />
-      <Button
-        title="Go to Medication"
-        onPress={() => navigation.navigate('Medication')}
-      />
+      <Button title="Save Exercise" onPress={saveExerciseLog} />
     </View>
   );
 };
@@ -43,7 +37,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: '100%',
-    height: 150,
+    height: 50,
     borderColor: '#ccc',
     borderWidth: 1,
     marginBottom: 20,
@@ -52,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default JournalScreen;
+export default ExerciseScreen;
